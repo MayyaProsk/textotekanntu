@@ -38,7 +38,6 @@
         <div class="face-rule"></div>
         <div class="face-info">
           <div class="face-name">${level.name}</div>
-          <div class="face-desc">${level.desc}</div>
           <div class="face-hint">Explore →</div>
         </div>
       </div>

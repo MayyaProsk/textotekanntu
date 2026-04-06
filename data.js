@@ -11,7 +11,6 @@ const LEVELS = [
   {
     id: 'A2',
     name: 'Elementary',
-    desc: 'Simple, short texts on everyday familiar topics',
     articles: [
       {
         title: 'What Is a Computer? Basic Parts and Functions.',
@@ -126,7 +125,6 @@ const LEVELS = [
   {
     id: 'B1',
     name: 'Intermediate',
-    desc: 'Texts on familiar topics with some complexity',
     articles: [
       {
         title: 'What Is an Information System? Main Components and Functions',
@@ -276,7 +274,6 @@ const LEVELS = [
   {
     id: 'B2',
     name: 'Upper-Intermediate',
-    desc: 'Complex texts on abstract and specialised subjects',
     articles: [
       {
         title: 'WHAT IS AN OPERATING SYSTEM?',
