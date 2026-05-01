@@ -478,6 +478,62 @@ html, body {
 }
 .article-text p + p { margin-top: 1em; }
 
+.article-text a,
+.article-text a:visited {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color var(--dur-theme) ease;
+}
+
+.article-text a:hover,
+.article-text a:focus-visible {
+  color: var(--accent);
+}
+
+.article-links {
+  margin-top: 1.25rem;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--text-dim);
+}
+
+.article-links-label {
+  margin-bottom: 0.3rem;
+  color: var(--text-mid);
+}
+
+.article-links ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.article-links li {
+  position: relative;
+}
+
+.article-links li::before {
+  content: '-';
+  position: absolute;
+  left: -1rem;
+  color: var(--text-dim);
+}
+
+.article-links a,
+.article-links a:visited {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color var(--dur-theme) ease;
+}
+
+.article-links a:hover,
+.article-links a:focus-visible {
+  color: var(--accent);
+}
+
 
 /* Theme toggle button */
 
@@ -597,12 +653,30 @@ body::after {
 /* Mobile */
 @media (max-width: 768px) {
 
-  .stage { flex-direction: column; }
+  html, body { overflow: auto; }
+
+  html:has(.stage.has-active),
+  body:has(.stage.has-active) {
+    overflow: hidden;
+  }
+
+  .stage {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .stage.has-active {
+    position: fixed;
+    inset: 0;
+    height: 100dvh;
+  }
 
   .column {
     flex: none;
     width: 100%;
-    height: calc(100vh / 3);
+    height: 25vh;
+    min-height: 80px;
     border-right: none;
     border-bottom: 1px solid var(--border);
     transition:
@@ -615,12 +689,13 @@ body::after {
 
   .stage.has-active .column.active {
     flex: none;
-    height: 100vh;
+    height: 100dvh;
     cursor: default;
   }
   .stage.has-active .column.inactive {
     flex: none;
     height: 0;
+    min-height: 0;
     opacity: 0;
     pointer-events: none;
     border-bottom: none;

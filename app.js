@@ -4,6 +4,67 @@
   // DOM build
 
   const stage = document.getElementById('stage');
+  const URL_REGEX = /https?:\/\/[^\s<]+[^<.,:;"')\]\s]/g;
+
+  /**
+   * Escape raw text before inserting it into HTML.
+   * @param {string} value
+   * @returns {string}
+   */
+  function escapeHTML(value) {
+    return value
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#39;');
+  }
+
+  /**
+   * Convert plain URLs in text into anchor tags.
+   * @param {string} text
+   * @returns {string}
+   */
+  function autoLinkText(text) {
+    return escapeHTML(text).replace(URL_REGEX, url => {
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+    });
+  }
+
+  /**
+   * Render article paragraphs and optional links block.
+   * @param {{ text: string, links?: Array<{ title?: string, href: string }> }} article
+   * @returns {string}
+   */
+  function renderArticleContent(article) {
+    const paragraphs = article.text
+      .split('\n\n')
+      .map(p => `<p>${autoLinkText(p)}</p>`)
+      .join('');
+
+    if (!Array.isArray(article.links) || article.links.length === 0) {
+      return paragraphs;
+    }
+
+    const linksHTML = article.links
+      .filter(link => link && link.href)
+      .map(link => {
+        const title = escapeHTML(link.title || link.href);
+        const href = escapeHTML(link.href);
+        return `<li><a href="${href}" target="_blank" rel="noopener noreferrer">${title}</a> (<a href="${href}" target="_blank" rel="noopener noreferrer">${href}</a>)</li>`;
+      })
+      .join('');
+
+    if (!linksHTML) {
+      return paragraphs;
+    }
+
+    return `${paragraphs}
+      <div class="article-links">
+        <div class="article-links-label">Links:</div>
+        <ul>${linksHTML}</ul>
+      </div>`;
+  }
 
   LEVELS.forEach(level => {
     const col = document.createElement('div');
@@ -11,10 +72,7 @@
     col.dataset.level = level.id;
 
     const articlesHTML = level.articles.map((article, i) => {
-      const paragraphs = article.text
-        .split('\n\n')
-        .map(p => `<p>${p}</p>`)
-        .join('');
+      const articleContent = renderArticleContent(article);
 
       return `
         <div class="article" data-idx="${i}">
@@ -25,7 +83,7 @@
           </div>
           <div class="article-body" role="region" aria-label="${article.title}">
             <div class="article-body-inner">
-              <div class="article-text">${paragraphs}</div>
+              <div class="article-text">${articleContent}</div>
             </div>
           </div>
         </div>`;

@@ -702,5 +702,71 @@ const LEVELS = [
 	      'In conclusion, Graphical Interfaces have transformed how we interact with technology by providing visually appealing and user-friendly interfaces that make it easier for users to navigate and perform tasks on their devices. As technology advances, GUIs will likely continue to evolve and improve, offering even more innovative ways for users to engage with their devices. Whether you\'re using a desktop computer, smartphone, or tablet, GUIs are crucial in enhancing the User Experience and making technology more accessible to users of all levels of expertise. As we continue to rely on application programs and software for our daily tasks and activities, understanding how GUIs work and how to navigate them effectively is essential for guaranteeing successful products!'
       },
     ]
+  },
+  {
+    id: 'Patents',
+    name: 'Patents',
+    articles: [
+	    {
+		    title: 'Patent 1',
+		    text: 'Systems and methods for processing data collected in an industrial environment using neural networks',
+		    links: [
+			    {
+				    title: 'Patent PDF',
+				    href: 'https://patentimages.storage.googleapis.com/e4/be/64/43c0cfe74a06f3/US12282837B2.pdf'
+			    }
+		    ]
+	    },
+	    {
+		    title: 'Patent 2',
+		    text: 'Automated translation of computer languages to extract and deploy computer systems and software',
+		    links: [
+			    {
+				    title: 'Patent PDF',
+				    href: 'https://patentimages.storage.googleapis.com/55/05/de/ec06d4b2b109d8/US20230393832A1.pdf'
+			    }
+		    ]
+	    },
+	    {
+		    title: 'Patent 3',
+		    text: 'Methods and systems for intelligent data collection for a production line',
+		    links: [
+			    {
+				    title: 'Patent PDF',
+				    href: 'https://patentimages.storage.googleapis.com/94/8f/65/cd2e53d88d847e/US11392111.pdf'
+			    }
+		    ]
+	    },
+	    {
+		    title: 'Patent 4',
+		    text: 'Systems and methods for processing data collected in an industrial environment using neural networks',
+		    links: [
+			    {
+				    title: 'Patent PDF',
+				    href: 'https://patentimages.storage.googleapis.com/e4/be/64/43c0cfe74a06f3/US12282837B2.pdf'
+			    }
+		    ]
+	    },
+	    {
+		    title: 'Patent 5',
+		    text: 'Encrypted search cloud service with cryptographic sharing',
+		    links: [
+			    {
+				    title: 'Patent PDF',
+				    href: 'https://patentimages.storage.googleapis.com/94/71/e0/14f4f0f151b8e2/US12141315.pdf'
+			    }
+		    ]
+	    },
+	    {
+		    title: 'Patent 6',
+		    text: 'Portable multifunction device, method, and graphical user interface for conference calling',
+		    links: [
+			    {
+				    title: 'Patent PDF',
+				    href: 'https://patentimages.storage.googleapis.com/43/77/3f/78d3ad83bbf5d7/US12160546.pdf'
+			    }
+		    ]
+	    }
+    ]
   }
 ];
